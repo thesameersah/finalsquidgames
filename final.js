@@ -139,3 +139,41 @@ async function openBlobModal(title, videoUrl) {
     alert("Sorry, failed to load the video.");
   }
 }
+
+
+
+
+
+  // Disable right-click
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+  });
+
+  // Disable specific key combos
+  document.addEventListener('keydown', function (e) {
+    // Prevent Ctrl+U (View Source)
+    if (e.ctrlKey && e.key.toLowerCase() === 'u') {
+      e.preventDefault();
+    }
+
+    // Prevent Ctrl+S (Save)
+    if (e.ctrlKey && e.key.toLowerCase() === 's') {
+      e.preventDefault();
+    }
+
+    // Prevent Ctrl+Shift+I or Ctrl+Shift+J (Inspect / Console)
+    if (e.ctrlKey && e.shiftKey && (e.key.toLowerCase() === 'i' || e.key.toLowerCase() === 'j')) {
+      e.preventDefault();
+    }
+
+    // Prevent F12 (Developer Tools)
+    if (e.key === 'F12') {
+      e.preventDefault();
+    }
+
+    // Prevent Ctrl+C, Ctrl+X, Ctrl+A (Copy, Cut, Select All)
+    if (e.ctrlKey && ['c', 'x', 'a'].includes(e.key.toLowerCase())) {
+      e.preventDefault();
+    }
+  });
+
